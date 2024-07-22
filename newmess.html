@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Membership Table</title>
+    <link rel="stylesheet" href="mess.css">
+</head>
+<body>
+    <h1>Mess Membership Table</h1>
+
+    <div class="form-container">
+        <form id="memberForm">
+            <input type="text" id="memberId" placeholder="Member ID" required>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="contactNumber" placeholder="Contact Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="date" id="joiningDate" placeholder="Joining Date" required>
+            <input type="date" id="expiryDate" placeholder="Expiry Date" required>
+            <input type="text" id="dietaryPreference" placeholder="Dietary Preference" required>
+            <input type="text" id="roomNumber" placeholder="Room Number">
+            <input type="text" id="paymentStatus" placeholder="Payment Status" required>
+            <input type="text" id="notes" placeholder="Notes">
+            <button type="submit">Add Member</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table id="membershipTable">
+            <thead>
+                <tr>
+                    <th>Member ID</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    <th>Email Address</th>
+                    <th>Joining Date</th>
+                    <th>Expiry Date</th>
+                    <th>Dietary Preference</th>
+                    <th>Room Number</th>
+                    <th>Payment Status</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="save-btn-container">
+        <button id="saveBtn">Save Data</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tableBody = document.querySelector('#membershipTable tbody');
+            const form = document.getElementById('memberForm');
+            const saveBtn = document.getElementById('saveBtn');
+
+            // Load saved data from localStorage
+            let members = JSON.parse(localStorage.getItem('members')) || [];
+
+            function renderTable() {
+                tableBody.innerHTML = '';
+                members.forEach((member, index) => {
+                    const row = document.createElement('tr');
+                    for (const key in member) {
+                        const cell = document.createElement('td');
+                        cell.textContent = member[key];
+                        cell.setAttribute('data-label', key.replace(/([A-Z])/g, ' $1').trim());
+                        row.appendChild(cell);
+                    }
+                    const actionCell = document.createElement('td');
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.classList.add('remove-btn');
+                    removeButton.addEventListener('click', () => {
+                        members.splice(index, 1);
+                        renderTable();
+                        saveDataLocally();
+                    });
+                    actionCell.appendChild(removeButton);
+                    row.appendChild(actionCell);
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function saveDataLocally() {
+                localStorage.setItem('members', JSON.stringify(members));
+                alert('Data saved successfully!');
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newMember = {
+                    memberId: document.getElementById('memberId').value,
+                    name: document.getElementById('name').value,
+                    contactNumber: document.getElementById('contactNumber').value,
+                    email: document.getElementById('email').value,
+                    joiningDate: document.getElementById('joiningDate').value,
+                    expiryDate: document.getElementById('expiryDate').value,
+                    dietaryPreference: document.getElementById('dietaryPreference').value,
+                    roomNumber: document.getElementById('roomNumber').value,
+                    paymentStatus: document.getElementById('paymentStatus').value,
+                    notes: document.getElementById('notes').value
+                };
+                members.push(newMember);
+                renderTable();
+                saveDataLocally();
+                form.reset();
+            });
+
+            saveBtn.addEventListener('click', saveDataLocally);
+
+            // Initial rendering of table on page load
+            renderTable();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="lybrary.css">
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+    </header>
+    <main>
+        <section class="books">
+            <h2>Books</h2>
+            <div class="book-list">
+                <!-- Book items will be dynamically added here -->
+            </div>
+            <button id="addBookBtn">Add New Book</button>
+        </section>
+        <section class="add-book-form" id="addBookForm">
+            <h2>Add New Book</h2>
+            <form id="bookForm">
+                <div class="form-group">
+                    <label for="title">Subject:</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="isbn">ISBN:</label>
+                    <input type="text" id="isbn" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentNumber">Student Number:</label>
+                    <input type="text" id="studentNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="branch">Branch:</label>
+                    <input type="text" id="branch" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <button id="saveBtn">Save Data</button>
+    <script>
+        // Sample books data (can be replaced with backend integration)
+        let books = JSON.parse(localStorage.getItem('books')) || [
+            { title: "Book 1", author: "Author 1", isbn: "1234567890", studentName: "John Doe", studentNumber: "12345", branch: "Computer Science" },
+            { title: "Book 2", author: "Author 2", isbn: "0987654321", studentName: "Jane Smith", studentNumber: "67890", branch: "Electrical Engineering" }
+        ];
+    
+        const bookList = document.querySelector('.book-list');
+        const addBookForm = document.getElementById('addBookForm');
+        const addBookBtn = document.getElementById('addBookBtn');
+        const bookForm = document.getElementById('bookForm');
+        const saveBtn = document.getElementById('saveBtn');
+    
+        // Function to render books
+        function renderBooks() {
+            bookList.innerHTML = '';
+            books.forEach((book, index) => {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book');
+                bookItem.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p><strong>Author:</strong> ${book.author}</p>
+                    <p><strong>ISBN:</strong> ${book.isbn}</p>
+                    <p><strong>Student Name:</strong> ${book.studentName}</p>
+                    <p><strong>Student Number:</strong> ${book.studentNumber}</p>
+                    <p><strong>Branch:</strong> ${book.branch}</p>
+                    <button class="remove-btn" data-index="${index}">Remove</button>
+                `;
+                bookList.appendChild(bookItem);
+            });
+    
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-btn').forEach(button => {
+                button.addEventListener('click', removeBook);
+            });
+        }
+    
+        // Function to handle form submission
+        function addBook(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const isbn = document.getElementById('isbn').value;
+            const studentName = document.getElementById('studentName').value;
+            const studentNumber = document.getElementById('studentNumber').value;
+            const branch = document.getElementById('branch').value;
+    
+            if (title && author && isbn && studentName && studentNumber && branch) {
+                const newBook = { title, author, isbn, studentName, studentNumber, branch };
+                books.push(newBook);
+                renderBooks();
+                bookForm.reset();
+                addBookForm.style.display = 'none'; // Hide the form after submission
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+    
+        // Function to remove a book
+        function removeBook(e) {
+            const index = e.target.dataset.index;
+            books.splice(index, 1);
+            renderBooks();
+        }
+    
+        // Function to save data
+        function saveData() {
+            try {
+                localStorage.setItem('books', JSON.stringify(books));
+                alert('Data saved successfully!');
+            } catch (error) {
+                alert('Failed to save data: ' + error.message);
+            }
+        }
+    
+        // Event listeners
+        addBookBtn.addEventListener('click', () => {
+            addBookForm.style.display = 'block';
+        });
+    
+        bookForm.addEventListener('submit', addBook);
+        saveBtn.addEventListener('click', saveData);
+    
+        // Initial render
+        renderBooks();
+    </script>
+    
+</body>
+</html>

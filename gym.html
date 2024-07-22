@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="gym.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Gym-Membership</a>
+        <nav class="navbar">
+            <a href="#Home" class="active">Home</a>
+            <a href="#membership">Membership</a>
+            <a href="#entry-Table">Entry-Table</a>
+        </nav>
+    </header>
+    
+    <!-- Home Section -->
+    <section class="Home" id="Home">
+        <div class="Home-content">
+            <h4>Hi Myself</h4>
+            <h1>John Smith</h1>
+            <p>I'm a certified personal trainer with over 10 years of experience in the fitness industry. My passion for health and wellness stems from my own journey of transforming my lifestyle and achieving my fitness goals.</p>
+            <div class="social-media">
+                <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="fb"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="insta"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="Home-img">
+            <img src="manfit.png" alt="Gym">
+        </div>
+    </section>
+    
+    <!-- Membership Plans Section -->
+    <section id="membership">
+        <h2>Membership Plans</h2>
+        <table class="Membership-plans">
+            <thead>
+                <tr>
+                    <th>Plan Name</th>
+                    <th>Price</th>
+                    <th>Benefits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="basic">
+                    <td>Basic</td>
+                    <td>₹2,000/month</td>
+                    <td>Access to gym equipment</td>
+                </tr>
+                <tr class="highlight">
+                    <td>Premium</td>
+                    <td>₹5,000/month</td>
+                    <td>Full gym access<br>Unlimited classes<br>Personal trainer</td>
+                </tr>
+                <tr class="ultimate">
+                    <td>Ultimate</td>
+                    <td>₹8,000/month</td>
+                    <td>All Premium benefits<br>Nutritional guidance<br>Sauna access</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- Entry Table Section -->
+    <section id="entry-Table">
+        <h2>Entry Table</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Join Date</th>
+                        <th>Last Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="name[]" placeholder="enter your name"></td>
+                        <td><input type="text" name="number[]" placeholder="enter your mobile number"></td>
+                        <td><input type="date" name="join_date[]" ></td>
+                        <td><input type="date" name="last_date[]"></td>
+                        <td><button onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button onclick="addRow()">Add Another Row</button>
+        <button onclick="saveData()">Save Data</button>
+        <div id="popupMessage"></div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Vijay Pankaj. All rights reserved.</p>
+    </footer>
+    
+    <script src="gym.js"></script>
+</body>
+</html>

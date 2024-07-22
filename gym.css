@@ -1,0 +1,301 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #191f36;
+    --snd-bg-color: #262B40;
+    --text-color: #fff;
+    --main-color: #59B2F4;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+/* Home Section */
+.Home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+    padding-bottom: 2rem;
+    margin-left: 1rem;
+}
+
+.Home-content h1 {
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-left: 2rem;
+}
+
+.Home-img img {
+    width: 28vw;
+    height: 28vw;
+    margin-left: 2rem;
+    margin-top: -2rem;
+}
+
+.Home-content p {
+    font-size: 1rem;
+}
+
+/* Social Media */
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: .5s ease;
+    font-size: 3rem;
+}
+
+.social-media a:hover {
+    background: var(--main-color);
+    color: var(--snd-bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+.yt{
+    color: red;
+}
+.insta{
+    color: rgb(227, 10, 133);
+}
+.fb{
+    color: #59B2F4;
+}
+/* Membership Plans Section */
+#membership {
+    padding: 4rem 0;
+    margin-top: 6rem;
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    color: gold;
+    margin-bottom: 2rem;
+}
+
+.Membership-plans {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.Membership-plans th,
+.Membership-plans td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.Membership-plans th {
+    background-color: #f2f2f2;
+}
+
+.Membership-plans .basic {
+    background-color: var(--main-color);
+}
+
+.Membership-plans .ultimate {
+    background-color: rgb(139, 138, 130);
+}
+
+.highlight {
+    background-color: rgb(240, 180, 13);
+}
+
+/* Entry Table Section */
+#entry-Table {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#entry-Table h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: gold;
+}
+
+#entry-Table table {
+    width: 100%;
+    border-collapse: collapse;
+    color: black;
+}
+
+#entry-Table th,
+#entry-Table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#entry-Table th {
+    background-color: #f2f2f2;
+}
+
+#entry-Table input[type="text"],
+#entry-Table input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#entry-Table button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#entry-Table button:hover {
+    background-color: #45a049;
+}
+
+#entry-Table #popupMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Query for screens smaller than 768px */
+@media(max-width:768px){
+    .Home{
+        flex-direction:column;
+      }
+      .Home-content h3{
+        font-size: 2.6rem;
+      }
+      .Home-content h1{
+        font-size: 5rem;
+      }
+      .Home-content{
+        order:2;
+      }
+      .Home-img img{
+        margin-top:1rem;
+        width: 80vw;
+        height: 80vw;
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+      }
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+}

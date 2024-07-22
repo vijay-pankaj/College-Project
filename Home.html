@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task-Management</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Home.css">
+  <style>
+    /* Additional styles can go here */
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="menu" id="menuBtn">Menu</div>
+    <div id="navHome">Home</div>
+    <div id="navContact">
+        <a href="contact.html" class="contact-us">Contact-Us</a>
+    </div>
+  </nav>
+  <section class="home-section" id="Home">
+    <div class="content">
+      <img src="vijay - Copy.png" alt="Home Image">
+      <h2>Welcome to Task Management with membership management</h2>
+      <div class="Home-content">
+        <h3>Hi Myself</h3>
+        <h1>Vijay Pankaj</h1>
+        <h3>And I'm a <span>Frontend Developer</span></h3>
+        <p><li> I am pursuing a Bachelor of Technology (B.Tech) degree in Computer Science and Engineering (CSE) from <br>University College of Engineering and Technology, Bikaner (Rajasthan).</li></p>
+        <br>
+        <p><li>Organize your tasks efficiently and effectively. Keep track of your tasks and never miss a deadline.</li></p>
+      </div>
+    </div>
+  </section>
+  <section class="menusidebar">
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" id="closeBtn"><i class="fa-solid fa-times"></i></div>
+        <div>
+            <div class="data-section">
+                <a href="#" id="taskManagementLink">Task-Management</a>
+              </div>
+          <div class="data-section">
+            <a href="gym.html">Gym Membership</a>
+          </div>
+          <div class="data-section">
+            <a href="newmess.html">Mess Membership</a>
+          </div>
+          <div class="data-section">
+            <a href="library.html">Library Membership</a>
+          </div>  
+        </div>
+
+        <div class="buttons">
+          <button class="logOut" id="logOut"> Log-Out</button>
+        </div>
+      </div>
+
+  </section>
+  <section class="task-management-section" id="TaskManagement">
+    <div class="task-content">
+      <h2>Task Management</h2>
+      <p>Manage your tasks efficiently and effectively.</p>
+      <!-- To-Do List Section -->
+      <div class="todo-container">
+        <h3>To-Do List</h3>
+        <input type="text" id="new-task" placeholder="Add a new task...">
+        <button id="add-task-btn">Add Task</button>
+        <ul id="task-list"></ul>
+      </div>
+    </div>
+    
+  </section>
+  <script src="Home.js"></script>
+  <script src="loginbutton.jsx"></script>
+</body>
+</html>
